@@ -10,12 +10,13 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@comment = Comment.find(params[:book_id])
+		@book = @comment.book
 		@comment.destroy
 		render :index
 	end
 
 	private
 	def comment_params
-		params.require(:comment).permit(:comment, :book_id, :user_id)
+		params.require(:comment).permit(:comment)
 	end
 end
